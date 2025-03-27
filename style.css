@@ -1,0 +1,308 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+a {
+    z-index: 100 !important;
+    position: relative;
+    /* Ensure <a> tags have their own stacking context */
+}
+
+/* Slide-up animation styles */
+.slide-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.slide-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-up.blink.visible {
+    animation: blink 0.3s ease-in-out 2 forwards 1s;
+}
+
+.screen1 {
+    background-image: url("/img/screen1/bg.png");
+    background-size: 100% 100%;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 100vh;
+    /* Set initial height to viewport height */
+    height: calc(var(--vh, 1vh) * 100);
+    /* Adjust for mobile browsers */
+    min-height: -webkit-fill-available;
+    /* Fallback for iOS Safari */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.screen2 {
+    background-image: url("/img/screen2/firework.png");
+    background-size: 110%;
+    background-position: center 10%;
+    background-repeat: no-repeat;
+    background-color: #F9FAE6;
+}
+
+/* Ensure images don't block clicks */
+.screen2 img {
+    pointer-events: none;
+    /* Prevent images from intercepting clicks */
+}
+
+/* Ensure clickable areas are interactive */
+.screen2 a {
+    pointer-events: auto;
+    /* Ensure links remain clickable */
+}
+
+/* Optional: Visual feedback for clickable areas */
+a:hover {
+    opacity: 0.9;
+    /* Subtle hover effect */
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+.slide-in-left {
+    animation: slideInLeft 1s ease-out forwards,
+        blink 0.3s ease-in-out 3 forwards 1s;
+}
+
+.slide-in-right {
+    animation: slideInRight 1s ease-out forwards,
+        blink 0.3s ease-in-out 3 forwards 1s;
+}
+
+@keyframes openLaptop {
+    from {
+        transform: rotateX(0deg);
+    }
+
+    to {
+        transform: rotateX(-90deg);
+        /* transform: rotateX(-180deg); */
+    }
+}
+
+.open_laptop_top {
+    transform-origin: top;
+    animation: openLaptop 1s ease-out forwards;
+}
+
+@keyframes openMonitor {
+    0% {
+        transform: rotateX(-90deg) scaleY(1.1) skewX(1deg);
+        opacity: 0;
+    }
+
+    1% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotateX(0deg) scaleY(1) skewX(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes openMonitorScaleText {
+    0% {
+        opacity: 0;
+
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+
+    }
+}
+
+.closed_monitor {
+    transform-origin: bottom;
+    animation: openMonitor 3s ease-out forwards;
+    animation-delay: 0.9s;
+    opacity: 0;
+}
+
+.closed_monitor_text {
+    transform-origin: bottom;
+    animation: openMonitorScaleText 2.5s ease-out forwards;
+    animation-delay: 4s;
+    opacity: 0;
+    scale: 1;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.9);
+        opacity: 0.8;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* styles.css */
+@keyframes firework {
+    0% {
+        transform: translateY(100px) scale(0);
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 1;
+        scale: 0;
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+        top: var(--final-top);
+        width: var(--final-width);
+        height: var(--final-height);
+        opacity: 1;
+    }
+}
+
+.firework-animation {
+    /* Animation will be applied via JavaScript */
+    opacity: 0;
+    /* Start hidden */
+}
+
+.screen3 {
+    background-image: url("/img/screen3/bg.png");
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+@keyframes ticketAnimation {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.ticket_animation {
+    animation: ticketAnimation 0.6s ease-out forwards;
+    animation-delay: 5s;
+    opacity: 0;
+}
+
+.intro-fade-out {
+    opacity: 1;
+    transition: opacity 0.1s ease-out 9.5s;
+    animation: hideElement 0.5s ease-out 9.5s forwards;
+}
+
+@keyframes hideElement {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.screen3-popup {
+    transform: translateY(100%);
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    opacity: 0;
+}
+
+.screen3-popup.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Add this to your existing styles */
+.prevent-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+a {
+    /* border: 1px solid red; */
+}
+
+
+
+@keyframes computerScaleUp {
+    from {
+        scale: 1;
+    }
+
+    to {
+        scale: 1.1;
+    }
+}
+
+.computer_animation {
+    animation: computerScaleUp 1s ease-out forwards;
+    animation-delay: 3s;
+}

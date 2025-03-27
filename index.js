@@ -1,0 +1,472 @@
+// index.js
+function App() {
+  // State to control ticket visibility
+  const [showTicket, setShowTicket] = React.useState(false);
+  const [isAtBottom, setIsAtBottom] = React.useState(false);
+  const [canScroll, setCanScroll] = React.useState(false);
+
+  // Add useEffect to handle the IntersectionObserver
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Lower threshold for earlier triggering
+      }
+    );
+
+    // Observe all elements with animation classes
+    document.querySelectorAll(".slide-up ").forEach((element) => {
+      observer.observe(element);
+    });
+
+    // Check date for ticket visibility
+    const checkDate = () => {
+      const now = new Date();
+      const startDate = new Date("2025-03-14T00:00:00"); // April 14, 2025, 12:00 AM
+      const endDate = new Date("2025-04-18T23:59:59"); // April 18, 2025, 11:59 PM
+
+      setShowTicket(now >= startDate && now <= endDate);
+    };
+
+    checkDate(); // Check immediately on mount
+    const interval = setInterval(checkDate, 60000); // Check every minute
+
+    // Cleanup observer and interval on component unmount
+    return () => {
+      observer.disconnect();
+      clearInterval(interval);
+    };
+  }, []); // Empty dependency array means this runs once on mount
+
+  // Add useEffect to apply random animation delays to fireworks
+  React.useEffect(() => {
+    // Define firework groups (elements that should animate together)
+    const fireworkGroups = [
+      // Group 1: fire1 (standalone)
+      document.querySelector('[alt="fire1"]'),
+
+      // Group 2: fire2 and its light effect
+      [
+        document.querySelector('[alt="fire2"]'),
+        document.querySelector('[alt="fire_light1"]'),
+      ],
+
+      // Group 3: fire3 and its light effect
+      [
+        document.querySelector('[alt="fire3"]'),
+        document.querySelector('[alt="fire_light2"]'),
+      ],
+
+      // Group 4: fire4 (standalone)
+      document.querySelector('[alt="fire4"]'),
+    ];
+
+    // Apply random delay to each group
+    fireworkGroups.forEach((group) => {
+      // Generate random delay between 1 and 3 seconds
+      const randomDelay = 5 + Math.random();
+
+      if (Array.isArray(group)) {
+        // If it's a group of elements, apply the same delay to all in group
+        group.forEach((element) => {
+          if (element) {
+            element.style.animation = `firework 1s ease-out forwards`;
+            element.style.animationDelay = `${randomDelay}s`;
+          }
+        });
+      } else if (group) {
+        // Single element
+        group.style.animation = `firework 1s ease-out forwards`;
+        group.style.animationDelay = `${randomDelay}s`;
+      }
+    });
+  }, []);
+
+  // Add this useEffect for screen visibility detection
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const screenNumber = entry.target.getAttribute("data-screen");
+            console.log(`Screen ${screenNumber} is visible`);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Lowered to trigger when 10% is visible
+      }
+    );
+
+    // Select screens and log them for debugging
+    const screens = document.querySelectorAll(".screen1, .screen2, .screen3");
+    console.log("Screens found:", screens.length, screens); // Debug: Check if screens are selected
+
+    if (screens.length === 0) {
+      console.warn("No screens found with the specified classes");
+    }
+
+    screens.forEach((screen, index) => {
+      screen.setAttribute("data-screen", index + 1); // Ensure data-screen is set
+      observer.observe(screen);
+    });
+
+    // Cleanup
+    return () => {
+      observer.disconnect();
+    };
+  }, []); // Empty dependency array means this runs once on mount
+
+  // Add this useEffect for scroll prevention
+  React.useEffect(() => {
+    // Prevent scrolling initially
+    document.body.classList.add("prevent-scroll");
+
+    // Enable scrolling after 7 seconds
+    const timer = setTimeout(() => {
+      document.body.classList.remove("prevent-scroll");
+      setCanScroll(true);
+    }, 10500);
+
+    // Cleanup
+    return () => {
+      clearTimeout(timer);
+      document.body.classList.remove("prevent-scroll");
+    };
+  }, []);
+
+  // Keep only this useEffect that uses IntersectionObserver
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsAtBottom(entry.isIntersecting);
+        });
+      },
+      {
+        threshold: 0.1, // Trigger when at least 10% of the element is visible
+      }
+    );
+
+    const redDiv = document.querySelector(".screen2 > div:last-child");
+    if (redDiv) {
+      observer.observe(redDiv);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      const introElement = document.querySelector(".intro-fade-out");
+      if (introElement) {
+        introElement.style.display = "none";
+      }
+    }, 10000); // 8 seconds (slightly after the animation ends)
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div className=" bg-gray-100 flex flex-col items-center justify-center relative ">
+      <div
+        className={` bg-gray-100 flex flex-col items-center justify-center max-w-[500px] mx-auto　 `}
+      >
+        <div
+          className="screen1 w-full h-[100dvh] p-10 pt-0 relative overflow-hidden relative intro-fade-out"
+          data-screen="1"
+        >
+          <div className="absolute top-0 left-0 w-full h-[40vh] z-50 ">
+            <img
+              src="/img/screen1/fire1.png"
+              alt="fire1"
+              className="w-20 h-20 absolute top-[20vh] left-0 firework-animation"
+              style={{
+                "--final-top": "20vh",
+                "--final-width": "80px",
+                "--final-height": "80px",
+              }}
+            />
+            <img
+              src="/img/screen1/fire2.png"
+              alt="fire2"
+              className="w-14 h-14 absolute top-[5vh] left-[30%] firework-animation"
+              style={{
+                "--final-top": "5vh",
+                "--final-width": "56px",
+                "--final-height": "56px",
+              }}
+            />
+            <img
+              src="/img/screen1/fire_light1.png"
+              alt="fire_light1"
+              className="w-1 h-12 absolute top-[5vh] left-[30%] mt-[50px] ml-[25px] firework-animation"
+              style={{
+                "--final-top": "5vh",
+                "--final-width": "4px",
+                "--final-height": "48px",
+              }}
+            />
+            <img
+              src="/img/screen1/fire3.png"
+              alt="fire3"
+              className="w-24 h-24 absolute top-[10vh] -right-[5%] firework-animation"
+              style={{
+                "--final-top": "10vh",
+                "--final-width": "96px",
+                "--final-height": "96px",
+              }}
+            />
+            <img
+              src="/img/screen1/fire_light2.png"
+              alt="fire_light2"
+              className="w-8 h-24 absolute top-[10vh] -right-[5%] mr-[30px] mt-[100px] firework-animation"
+              style={{
+                "--final-top": "10vh",
+                "--final-width": "32px",
+                "--final-height": "96px",
+              }}
+            />
+            <img
+              src="/img/screen1/fire4.png"
+              alt="fire4"
+              className="w-12 h-12 absolute top-[40vh] right-[10%] firework-animation"
+              style={{
+                "--final-top": "40vh",
+                "--final-width": "48px",
+                "--final-height": "48px",
+              }}
+            />
+          </div>
+          <img
+            src="/img/screen1/title.png"
+            alt="title"
+            className="w-4/5 mx-auto mt-[16vh] "
+          />
+
+          <img
+            src="/img/screen1/icon_left.png"
+            className="w-[40vw] mx-auto mt-[20vh] absolute -left-[10%] top-[20vh] slide-in-left max-w-[200px] z-50"
+            alt="Left decorative icon"
+          />
+          <img
+            src="/img/screen1/icon_right.png"
+            className="w-[30vw] mx-auto mt-[20vh] absolute -right-[10%] top-[20vh] slide-in-right max-w-[160px] z-50"
+            alt="Right decorative icon"
+          />
+
+          <div className=" justify-center items-center flex  h-full  absolute top-[40vh]  w-[90%] mx-auto computer_animation  -ml-[2%] ">
+            <img
+              src="/img/screen1/laptop_top.png"
+              alt="laptop top"
+              className="max-w-[320px] w-full mx-auto absolute top-[310px] z-50 open_laptop_top"
+            />
+            <img
+              src="/img/screen1/monitor.png"
+              alt="monitor"
+              className="max-w-[220px] w-full mx-auto absolute top-[160px] closed_monitor z-50"
+            />
+            <img
+              src="/img/screen1/monitor_text.png"
+              alt="monitor text"
+              className="max-w-[220px] w-full mx-auto absolute top-[160px] closed_monitor_text z-50"
+            />
+            <img
+              src="/img/screen1/laptop_bottom.png"
+              alt="laptop bottom"
+              className="max-w-[300px] w-full mx-auto absolute top-[300px] z-40"
+            />
+            {showTicket && (
+              <img
+                src="/img/screen1/ticket.png"
+                alt="ticket"
+                className="w-[110px] mx-auto absolute top-[50px] z-0 ticket_animation scale-90"
+              />
+            )}
+          </div>
+          <div className="absolute bottom-0 left-0 w-full h-10 bg-white flex items-center justify-center z-50">
+            <img
+              src="/img/screen1/logo.png"
+              alt="logo"
+              className="w-1/5 mx-auto"
+            />
+          </div>
+        </div>
+        <div
+          className="screen2 w-full min-h-[100dvh] p-10 pt-0 pb-28 relative overflow-hidden"
+          data-screen="2"
+        >
+          <img
+            src="/img/screen2/title.png"
+            alt="title"
+            className="w-full slide-up"
+          />
+          <img
+            src="/img/screen2/subtitle.png"
+            alt="subtitle"
+            className="w-2/3 mx-auto my-[4vh] slide-up"
+          />
+          <img
+            src="/img/screen2/icon_left.png"
+            className="w-[10vw] mx-auto mt-[10vh] absolute left-[5%]  top-[20vh]  max-w-[40px] z-50"
+            alt="Left decorative icon"
+          />
+          <img
+            src="/img/screen2/icon_right.png"
+            className="w-[15vw] mx-auto mt-[20vh] absolute  top-[25%]  -right-[5%] max-w-[70px] "
+            alt="Right decorative icon"
+          />
+
+          <div className="w-full flex flex-col items-center mb-10 slide-up">
+            <iframe
+              src="https://play.wecandeo.com/video/v/?key=BOKNS9AQWrEisuRmtr15XPf9k7hPMdJrAABTxseeeGDKElXv9cAAyYAieie"
+              className="w-full aspect-video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+          <div className="flex flex-col items-center relative slide-up blink">
+            <a
+              href="https://www.dtalks.kr/bbs/boardView.do?bsIdx=40&bIdx=1347&page=1&menuId=3088&bcIdx=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="z-50 block "
+            >
+              <img
+                src="/img/screen2/btn_top.png"
+                alt="사전신청하러가기"
+                className="w-full my-[4vh]"
+              />
+            </a>
+          </div>
+
+
+
+          <img
+            src="/img/screen2/lineup_title.png"
+            alt="lineup title"
+            className="w-1/5 mx-auto  mb-5 slide-up"
+          />
+
+          <div className="flex flex-col items-center relative slide-up z-40">
+            <img
+              src="/img/screen2/lineup1.png"
+              alt="lineup 1"
+              className="w-full"
+            />
+            <a
+              href="https://www.dtalks.kr/websim/userLiveView.do?live_idx=814&viewType=live"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-[30%] h-8  absolute bottom-[31%] z-50"
+            ></a>
+          </div>
+
+          <div className="flex flex-col items-center relative slide-up z-40">
+            <img
+              src="/img/screen2/lineup2.png"
+              alt="lineup 2"
+              className="w-full"
+            />
+            <a
+              href="https://www.dtalks.kr/websim/userLiveView.do?live_idx=815&viewType=live"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-[30%] h-8  absolute bottom-[31%] z-50"
+            ></a>
+          </div>
+
+          <div className="flex flex-col items-center relative slide-up z-40">
+            <img
+              src="/img/screen2/lineup3.png"
+              alt="lineup 3"
+              className="w-full"
+            />
+            <a
+              href="https://www.dtalks.kr/websim/userLiveView.do?live_idx=816&viewType=live"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-[30%] h-8  absolute bottom-[27%] z-50"
+            ></a>
+          </div>
+
+          <div className="flex flex-col items-center relative slide-up z-40">
+            <img
+              src="/img/screen2/lineup4.png"
+              alt="lineup 4"
+              className="w-full"
+            />
+            <a
+              href="https://www.dtalks.kr/websim/userLiveView.do?live_idx=817&viewType=live"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-[30%] h-8  absolute bottom-[30%] z-50"
+            ></a>
+          </div>
+
+          <div className="flex flex-col items-center relative slide-up z-40">
+            <img
+              src="/img/screen2/lineup5.png"
+              alt="lineup 5"
+              className="w-full"
+            />
+            <a
+              href="https://www.dtalks.kr/websim/userLiveView.do?live_idx=818&viewType=live"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-[30%] h-8  absolute bottom-[24%] z-50"
+            ></a>
+          </div>
+
+          <div className="flex flex-col items-center relative slide-up mb-20">
+            <a
+              href="https://www.dtalks.kr/main.do"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="z-50 block w-full flex items-center justify-center"
+            >
+              <img
+                src="/img/screen2/btn_bottom.png"
+                alt="디톡스로 이동하기"
+                className="w-full"
+              />
+            </a>
+          </div>
+
+          <div className="w-full h-32 "></div>
+          <div className="w-full h-4 "></div>
+        </div>
+        <div
+          className={`screen3 w-full max-w-[500px] mx-auto h-[100dvh] fixed top-0  p-10 pt-0 overflow-hidden flex flex-col items-center justify-center screen3-popup z-50 ${isAtBottom ? "show" : ""
+            }`}
+          data-screen="3"
+        >
+          <img
+            src="/img/screen3/cont.png"
+            alt="cont"
+            className="w-full slide-up"
+          />
+          <div className="text-center text-[7px] text-white mt-10 absolute bottom-[5vh]">
+            <p>
+              <span className="font-bold">대웅제약</span> | 04808 서울특별시
+              성동구 천호대로 386
+            </p>
+            <p>
+              TEL (02)2204-7000 (수신자부담) 080-492-8272 FAX (02)3436-4878
+              www.daewoongpharm.com
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById("root"));
