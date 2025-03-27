@@ -133,7 +133,7 @@ function App() {
     const timer = setTimeout(() => {
       document.body.classList.remove("prevent-scroll");
       setCanScroll(true);
-    }, 11000);
+    }, 12000);
 
     // Cleanup
     return () => {
@@ -169,7 +169,7 @@ function App() {
       if (introElement) {
         introElement.style.display = "none";
       }
-    }, 10500); // 8 seconds (slightly after the animation ends)
+    }, 11500); // 8 seconds (slightly after the animation ends)
 
     return () => clearTimeout(timer);
   }, []);
@@ -262,7 +262,7 @@ function App() {
             alt="Right decorative icon"
           />
 
-          <div className=" justify-center items-center flex  h-full  absolute top-[40vh]  w-[90%] mx-auto computer_animation  -ml-[2%] ">
+          <div className=" justify-center items-center flex  h-full  absolute top-[40vh] md:top-[50vh]  w-[90%] mx-auto computer_animation  -ml-[2%] ">
             <img
               src="/img/screen1/laptop_top.png"
               alt="laptop top"

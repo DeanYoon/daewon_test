@@ -249,8 +249,8 @@ a:hover {
 
 .intro-fade-out {
     opacity: 1;
-    transition: opacity 0.1s ease-out 10s;
-    animation: hideElement 0.5s ease-out 10s forwards;
+    transition: opacity 0.1s ease-out 11s;
+    animation: hideElement 0.5s ease-out 11s forwards;
 }
 
 @keyframes hideElement {
