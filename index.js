@@ -71,7 +71,7 @@ function App() {
     // Apply random delay to each group
     fireworkGroups.forEach((group) => {
       // Generate random delay between 1 and 3 seconds
-      const randomDelay = 5 + Math.random();
+      const randomDelay = 3 + Math.random();
 
       if (Array.isArray(group)) {
         // If it's a group of elements, apply the same delay to all in group
@@ -133,7 +133,7 @@ function App() {
     const timer = setTimeout(() => {
       document.body.classList.remove("prevent-scroll");
       setCanScroll(true);
-    }, 10500);
+    }, 11000);
 
     // Cleanup
     return () => {
@@ -169,7 +169,7 @@ function App() {
       if (introElement) {
         introElement.style.display = "none";
       }
-    }, 10000); // 8 seconds (slightly after the animation ends)
+    }, 10500); // 8 seconds (slightly after the animation ends)
 
     return () => clearTimeout(timer);
   }, []);
@@ -324,13 +324,8 @@ function App() {
             alt="Right decorative icon"
           />
 
-          <div className="w-full flex flex-col items-center mb-10 slide-up">
-            <iframe
-              src="https://play.wecandeo.com/video/v/?key=BOKNS9AQWrEisuRmtr15XPf9k7hPMdJrAABTxseeeGDKElXv9cAAyYAieie"
-              className="w-full aspect-video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+          <div className="w-full flex flex-col items-center mb-10 slide-up relative">
+            <VideoPlayer />
           </div>
           <div className="flex flex-col items-center relative slide-up blink">
             <a
@@ -465,6 +460,97 @@ function App() {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+// Add this VideoPlayer component before the App component
+function VideoPlayer() {
+  const videoRef = React.useRef(null);
+  const [showVideo, setShowVideo] = React.useState(false);
+
+  const handleThumbnailClick = () => {
+    setShowVideo(true);
+    // Small delay to ensure video element is rendered
+    setTimeout(() => {
+      const video = videoRef.current;
+      if (video) {
+        if (video.requestFullscreen) {
+          video.requestFullscreen();
+        }
+        else if (video.msRequestFullscreen) {
+          video.msRequestFullscreen();
+        }
+        else if (video.mozRequestFullScreen) {
+          video.mozRequestFullScreen();
+        }
+        else if (video.webkitRequestFullScreen) {
+          video.webkitRequestFullScreen();
+        }
+        // Start playing the video
+        video.play();
+      }
+    }, 100);
+  };
+
+  // Handle fullscreen exit
+  React.useEffect(() => {
+    const handleFullscreenChange = () => {
+      if (!document.fullscreenElement &&
+        !document.webkitFullscreenElement &&
+        !document.mozFullScreenElement &&
+        !document.msFullscreenElement) {
+        setShowVideo(false);
+      }
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
+    };
+  }, []);
+
+  return (
+    <div className="w-full flex flex-col items-center mb-10 slide-up relative">
+      {/* Thumbnail */}
+      {!showVideo && (
+        <div
+          className="w-full aspect-video relative cursor-pointer"
+          onClick={handleThumbnailClick}
+        >
+          <img
+            src="/img/screen2/thumbnail.jpg"
+            alt="Video thumbnail"
+            className="w-full h-full object-cover"
+          />
+          {/* Play button overlay */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center">
+              <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[20px] border-l-black border-b-[10px] border-b-transparent ml-1"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Video (hidden until thumbnail is clicked) */}
+      {showVideo && (
+        <video
+          ref={videoRef}
+          className="w-full aspect-video"
+          controls
+          playsInline
+        >
+          <source src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI3ko7iisL7zDfzVGZY6WmbCEsOTNlBiiMyllbfisSYQuJMUHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5.mp4" />
+          Your browser does not support the video tag.
+        </video>
+      )}
     </div>
   );
 }
