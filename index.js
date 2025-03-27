@@ -2,24 +2,52 @@
 function VideoPlayer() {
   const videoRef = React.useRef(null);
   const [showVideo, setShowVideo] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  // Check if device is mobile
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const enterFullscreen = (element) => {
+    if (element.requestFullscreen) {
+      return element.requestFullscreen();
+    } else if (element.webkitRequestFullscreen) {
+      return element.webkitRequestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+      return element.mozRequestFullScreen();
+    } else if (element.msRequestFullscreen) {
+      return element.msRequestFullscreen();
+    }
+    return Promise.reject(new Error('Fullscreen API is not supported'));
+  };
 
   const handleThumbnailClick = () => {
     setShowVideo(true);
-    // Small delay to ensure video element is rendered
     setTimeout(() => {
       const video = videoRef.current;
       if (video) {
-        if (video.requestFullscreen) {
-          video.requestFullscreen();
-        } else if (video.msRequestFullscreen) {
-          video.msRequestFullscreen();
-        } else if (video.mozRequestFullScreen) {
-          video.mozRequestFullScreen();
-        } else if (video.webkitRequestFullScreen) {
-          video.webkitRequestFullScreen();
+        if (!isMobile) {
+          enterFullscreen(video)
+            .then(() => {
+              video.play().catch(error => {
+                console.error("Error playing video:", error);
+              });
+            })
+            .catch(error => {
+              console.error("Error entering fullscreen:", error);
+              video.play().catch(err => console.error("Fallback play error:", err));
+            });
+        } else {
+          video.play().catch(error => console.error("Error playing video:", error));
         }
-        // Start playing the video
-        video.play();
       }
     }, 100);
   };
@@ -27,13 +55,15 @@ function VideoPlayer() {
   // Handle fullscreen exit
   React.useEffect(() => {
     const handleFullscreenChange = () => {
-      if (
-        !document.fullscreenElement &&
-        !document.webkitFullscreenElement &&
-        !document.mozFullScreenElement &&
-        !document.msFullscreenElement
-      ) {
+      const isFullscreen = document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        document.mozFullScreenElement ||
+        document.msFullscreenElement;
+      if (!isFullscreen) {
         setShowVideo(false);
+        if (videoRef.current) {
+          videoRef.current.pause();
+        }
       }
     };
 
@@ -59,11 +89,10 @@ function VideoPlayer() {
           onClick={handleThumbnailClick}
         >
           <img
-            src="/path/to/your/thumbnail.jpg"
+            src="/img/screen2/thumbnail.jpg"
             alt="Video thumbnail"
             className="w-full h-full object-cover"
           />
-          {/* Play button overlay */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center">
               <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[20px] border-l-black border-b-[10px] border-b-transparent ml-1"></div>
@@ -72,15 +101,19 @@ function VideoPlayer() {
         </div>
       )}
 
-      {/* Video (hidden until thumbnail is clicked) */}
+      {/* Video */}
       {showVideo && (
         <video
           ref={videoRef}
           className="w-full aspect-video"
           controls
           playsInline
+          webkit-playsinline="true"
         >
-          <source src="http://www.archive.org/download/Mario1_507/Mario1_507_512kb.mp4" />
+          <source
+            src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI3ko7iisL7zDfzVGZY6WmbCEsOTNlBiiMyllbfisSYQuJMUHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5.mp4"
+            type="video/mp4"
+          />
           Your browser does not support the video tag.
         </video>
       )}
@@ -403,47 +436,6 @@ function App() {
           </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-function VideoPlayer() {
-  const videoRef = React.useRef(null);
-
-  const enterFullscreen = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-    } else if (video.msRequestFullscreen) {
-      video.msRequestFullscreen();
-    } else if (video.mozRequestFullScreen) {
-      video.mozRequestFullScreen();
-    } else if (video.webkitRequestFullScreen) {
-      video.webkitRequestFullScreen();
-    }
-  };
-
-  const handleVideoClick = () => {
-    const video = videoRef.current;
-    if (video) {
-      enterFullscreen();
-      video.play().catch(error => console.error("Error playing video:", error));
-    }
-  };
-
-  return (
-    <div className="w-full flex flex-col items-center mb-10 slide-up relative">
-      <video
-        ref={videoRef}
-        className="w-full aspect-video cursor-pointer"
-        controls
-        onClick={handleVideoClick}
-      >
-        <source src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI3ko7iisL7zDfzVGZY6WmbCEsOTNlBiiMyllbfisSYQuJMUHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5.mp4" />
-        Your browser does not support the video tag.
-      </video>
     </div>
   );
 }

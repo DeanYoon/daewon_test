@@ -307,3 +307,14 @@ a {
     animation: computerScaleUp 1s ease-out forwards;
     animation-delay: 5s;
 }
+
+.video-background {
+
+    background-image: url("/img/screen2/thumbnail.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+
+}
