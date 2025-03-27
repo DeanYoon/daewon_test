@@ -105,7 +105,7 @@ function VideoPlayer() {
       {showVideo && (
         <video
           ref={videoRef}
-          className="w-full aspect-video"
+          className="w-full aspect-video "
           controls
           playsInline
         >
@@ -350,6 +350,7 @@ function App() {
             alt="Right decorative icon"
           />
           <VideoPlayer />
+          <VideoPlayerMobile />
           {/* <div className="w-full flex flex-col items-center mb-10 slide-up relative  md:flex hidden">
 
             <video id="mario-video" controls>
@@ -444,50 +445,50 @@ function App() {
   );
 }
 
-// function VideoPlayer() {
-//   const videoRef = React.useRef(null);
+function VideoPlayerMobile() {
+  const videoRef = React.useRef(null);
 
-//   const enterFullscreen = () => {
-//     const video = videoRef.current;
-//     if (!video) return;
+  const enterFullscreen = () => {
+    const video = videoRef.current;
+    if (!video) return;
 
-//     if (video.requestFullscreen) {
-//       video.requestFullscreen();
-//     } else if (video.msRequestFullscreen) {
-//       video.msRequestFullscreen();
-//     } else if (video.mozRequestFullScreen) {
-//       video.mozRequestFullScreen();
-//     } else if (video.webkitRequestFullScreen) {
-//       video.webkitRequestFullScreen();
-//     }
-//   };
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+    } else if (video.msRequestFullscreen) {
+      video.msRequestFullscreen();
+    } else if (video.mozRequestFullScreen) {
+      video.mozRequestFullScreen();
+    } else if (video.webkitRequestFullScreen) {
+      video.webkitRequestFullScreen();
+    }
+  };
 
-//   const handleVideoClick = () => {
-//     const video = videoRef.current;
-//     if (video) {
-//       enterFullscreen();
-//       video.play().catch(error => console.error("Error playing video:", error));
-//     }
-//   };
+  const handleVideoClick = () => {
+    const video = videoRef.current;
+    if (video) {
+      enterFullscreen();
+      video.play().catch(error => console.error("Error playing video:", error));
+    }
+  };
 
-//   return (
-//     <div>
-//       <div className="w-full flex flex-col items-center mb-10 slide-up relative video-background md:hidden">
-//         <video
-//           ref={videoRef}
-//           className="w-full aspect-video cursor-pointer "
-//           controls
-//           onClick={handleVideoClick}
-//         >
-//           <source src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI3ko7iisL7zDfzVGZY6WmbCEsOTNlBiiMyllbfisSYQuJMUHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5.mp4" />
-//           Your browser does not support the video tag.
-//         </video>
-//       </div>
+  return (
+    <div>
+      <div className="w-full flex flex-col items-center mb-10 slide-up relative video-background md:hidden">
+        <video
+          ref={videoRef}
+          className="w-full aspect-video cursor-pointer "
+          controls
+          onClick={handleVideoClick}
+        >
+          <source src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI3ko7iisL7zDfzVGZY6WmbCEsOTNlBiiMyllbfisSYQuJMUHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5.mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
 
-//     </div>
-//   );
-// }
+    </div>
+  );
+}
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
