@@ -469,71 +469,31 @@ function VideoPlayer() {
   const videoRef = React.useRef(null);
   const [showVideo, setShowVideo] = React.useState(false);
 
-  const enterFullscreen = (element) => {
-    if (element.requestFullscreen) {
-      return element.requestFullscreen();
-    } else if (element.webkitRequestFullscreen) { // Safari (iOS and desktop)
-      return element.webkitRequestFullscreen();
-    } else if (element.mozRequestFullScreen) { // Firefox
-      return element.mozRequestFullScreen();
-    } else if (element.msRequestFullscreen) { // IE/Edge
-      return element.msRequestFullscreen();
-    }
-    return Promise.reject(new Error('Fullscreen API is not supported'));
-  };
-
   const handleThumbnailClick = () => {
     setShowVideo(true);
+    // Small delay to ensure video element is rendered
     setTimeout(() => {
       const video = videoRef.current;
       if (video) {
-        enterFullscreen(video)
-          .then(() => {
-            video.play().catch(error => {
-              console.error("Error playing video:", error);
-            });
-          })
-          .catch(error => {
-            console.error("Error entering fullscreen:", error);
-            // Fallback: play video without fullscreen if it fails
-            video.play().catch(err => console.error("Fallback play error:", err));
-          });
+        if (video.requestFullscreen) {
+          video.requestFullscreen();
+        }
+        else if (video.msRequestFullscreen) {
+          video.msRequestFullscreen();
+        }
+        else if (video.mozRequestFullScreen) {
+          video.mozRequestFullScreen();
+        }
+        else if (video.webkitRequestFullScreen) {
+          video.webkitRequestFullScreen();
+        }
       }
     }, 100);
   };
 
-  // Handle fullscreen exit
-  React.useEffect(() => {
-    const handleFullscreenChange = () => {
-      const isFullscreen = document.fullscreenElement ||
-        document.webkitFullscreenElement ||
-        document.mozFullScreenElement ||
-        document.msFullscreenElement;
-      if (!isFullscreen) {
-        setShowVideo(false);
-        if (videoRef.current) {
-          videoRef.current.pause();
-        }
-      }
-    };
-
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
-    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
-    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
-
-    return () => {
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
-      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
-      document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
-      document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
-    };
-  }, []);
-
   return (
     <div className="w-full flex flex-col items-center mb-10 slide-up relative">
-      {/* Thumbnail */}
-      {!showVideo && (
+      {!showVideo ? (
         <div
           className="w-full aspect-video relative cursor-pointer"
           onClick={handleThumbnailClick}
@@ -549,16 +509,13 @@ function VideoPlayer() {
             </div>
           </div>
         </div>
-      )}
-
-      {/* Video */}
-      {showVideo && (
+      ) : (
         <video
           ref={videoRef}
-          className="w-full aspect-video"
+          className="w-full aspect-video cursor-pointer"
           controls
           playsInline
-          webkit-playsinline="true" // For iOS Safari
+          webkit-playsinline="true"
         >
           <source
             src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI3ko7iisL7zDfzVGZY6WmbCEsOTNlBiiMyllbfisSYQuJMUHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5.mp4"
