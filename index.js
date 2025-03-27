@@ -305,7 +305,7 @@ function App() {
             className="w-[30vw] mx-auto mt-[20vh] absolute -right-[10%] top-[20vh] slide-in-right max-w-[160px] z-50"
             alt="Right decorative icon"
           />
-          <div className="justify-center items-center flex h-full absolute top-[40vh] md:top-[50vh] w-[90%] mx-auto computer_animation -ml-[2%]">
+          <div className="justify-center items-center flex h-full absolute top-[40vh] md:top-[50vh] w-[90%] mx-auto computer_animation z-50 -ml-[2%]">
             <img
               src="/img/screen1/laptop_top.png"
               alt="laptop top"
@@ -330,7 +330,7 @@ function App() {
               <img
                 src="/img/screen1/ticket.png"
                 alt="ticket"
-                className="w-[110px] mx-auto absolute top-[50px] z-0 ticket_animation scale-90"
+                className="w-[110px] mx-auto absolute top-[50px] z-0 ticket_animation scale-90 "
               />
             )}
           </div>
