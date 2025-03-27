@@ -315,7 +315,7 @@ function App() {
           />
           <img
             src="/img/screen2/icon_left.png"
-            className="w-[10vw] mx-auto mt-[10vh] absolute left-[5%]  top-[20vh]  max-w-[40px] z-50"
+            className="w-[10vw] mx-auto mt-[10vh] absolute left-[5%]  top-[22vh]  max-w-[40px] z-50"
             alt="Left decorative icon"
           />
           <img
