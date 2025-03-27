@@ -80,7 +80,7 @@ function VideoPlayer() {
   }, []); // Empty dependency array means this runs once on mount
 
   return (
-    <div className="w-full flex flex-col items-center mb-10 slide-up relative">
+    <div className="w-full flex flex-col items-center mb-10 slide-up relative md:block hidden">
       {/* Thumbnail */}
       {!showVideo && (
         <div
@@ -88,7 +88,7 @@ function VideoPlayer() {
           onClick={handleThumbnailClick}
         >
           <img
-            src="/path/to/your/thumbnail.jpg"
+            src="https://daewontest.vercel.app/img/screen2/thumbnail.jpg"
             alt="Video thumbnail"
             className="w-full h-full object-cover"
           />
@@ -109,7 +109,7 @@ function VideoPlayer() {
           controls
           playsInline
         >
-          <source src="http://www.archive.org/download/Mario1_507/Mario1_507_512kb.mp4" />
+          <source src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI3ko7iisL7zDfzVGZY6WmbCEsOTNlBiiMyllbfisSYQuJMUHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5.mp4" />
           Your browser does not support the video tag.
         </video>
       )}
