@@ -350,14 +350,14 @@ function App() {
             alt="Right decorative icon"
           />
           <VideoPlayer />
-          <div className="w-full flex flex-col items-center mb-10 slide-up relative  md:flex hidden">
+          {/* <div className="w-full flex flex-col items-center mb-10 slide-up relative  md:flex hidden">
 
             <video id="mario-video" controls>
               <source src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI3ko7iisL7zDfzVGZY6WmbCEsOTNlBiiMyllbfisSYQuJMUHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 
-          </div>
+          </div> */}
           <div className="flex flex-col items-center relative slide-up blink">
             <a
               href="https://www.dtalks.kr/bbs/boardView.do?bsIdx=40&bIdx=1347&page=1&menuId=3088&bcIdx=0"
