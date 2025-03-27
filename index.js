@@ -50,6 +50,35 @@ function VideoPlayer() {
     };
   }, []);
 
+  // Add this useEffect for desktop version
+  React.useEffect(() => {
+    const marioVideo = document.getElementById("mario-video");
+
+    if (marioVideo) {
+      const handleFullscreen = () => {
+        if (marioVideo.requestFullscreen) {
+          marioVideo.requestFullscreen();
+        }
+        else if (marioVideo.msRequestFullscreen) {
+          marioVideo.msRequestFullscreen();
+        }
+        else if (marioVideo.mozRequestFullScreen) {
+          marioVideo.mozRequestFullScreen();
+        }
+        else if (marioVideo.webkitRequestFullScreen) {
+          marioVideo.webkitRequestFullScreen();
+        }
+      };
+
+      marioVideo.addEventListener("click", handleFullscreen);
+
+      // Cleanup event listener on component unmount
+      return () => {
+        marioVideo.removeEventListener("click", handleFullscreen);
+      };
+    }
+  }, []); // Empty dependency array means this runs once on mount
+
   return (
     <div className="w-full flex flex-col items-center mb-10 slide-up relative">
       {/* Thumbnail */}
@@ -321,6 +350,14 @@ function App() {
             alt="Right decorative icon"
           />
           <VideoPlayer />
+          <div className="w-full flex flex-col items-center mb-10 slide-up relative  md:flex hidden">
+
+            <video id="mario-video" controls>
+              <source src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI3ko7iisL7zDfzVGZY6WmbCEsOTNlBiiMyllbfisSYQuJMUHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+
+          </div>
           <div className="flex flex-col items-center relative slide-up blink">
             <a
               href="https://www.dtalks.kr/bbs/boardView.do?bsIdx=40&bIdx=1347&page=1&menuId=3088&bcIdx=0"
@@ -407,45 +444,54 @@ function App() {
   );
 }
 
-function VideoPlayer() {
-  const videoRef = React.useRef(null);
+// function VideoPlayer() {
+//   const videoRef = React.useRef(null);
 
-  const enterFullscreen = () => {
-    const video = videoRef.current;
-    if (!video) return;
+//   const enterFullscreen = () => {
+//     const video = videoRef.current;
+//     if (!video) return;
 
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-    } else if (video.msRequestFullscreen) {
-      video.msRequestFullscreen();
-    } else if (video.mozRequestFullScreen) {
-      video.mozRequestFullScreen();
-    } else if (video.webkitRequestFullScreen) {
-      video.webkitRequestFullScreen();
-    }
-  };
+//     if (video.requestFullscreen) {
+//       video.requestFullscreen();
+//     } else if (video.msRequestFullscreen) {
+//       video.msRequestFullscreen();
+//     } else if (video.mozRequestFullScreen) {
+//       video.mozRequestFullScreen();
+//     } else if (video.webkitRequestFullScreen) {
+//       video.webkitRequestFullScreen();
+//     }
+//   };
 
-  const handleVideoClick = () => {
-    const video = videoRef.current;
-    if (video) {
-      enterFullscreen();
-      video.play().catch(error => console.error("Error playing video:", error));
-    }
-  };
+//   const handleVideoClick = () => {
+//     const video = videoRef.current;
+//     if (video) {
+//       enterFullscreen();
+//       video.play().catch(error => console.error("Error playing video:", error));
+//     }
+//   };
 
-  return (
-    <div className="w-full flex flex-col items-center mb-10 slide-up relative video-background">
-      <video
-        ref={videoRef}
-        className="w-full aspect-video cursor-pointer"
-        controls
-        onClick={handleVideoClick}
-      >
-        <source src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI3ko7iisL7zDfzVGZY6WmbCEsOTNlBiiMyllbfisSYQuJMUHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5.mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       <div className="w-full flex flex-col items-center mb-10 slide-up relative video-background md:hidden">
+//         <video
+//           ref={videoRef}
+//           className="w-full aspect-video cursor-pointer "
+//           controls
+//           onClick={handleVideoClick}
+//         >
+//           <source src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI3ko7iisL7zDfzVGZY6WmbCEsOTNlBiiMyllbfisSYQuJMUHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5.mp4" />
+//           Your browser does not support the video tag.
+//         </video>
+//       </div>
+
+
+//     </div>
+//   );
+// }
 
 ReactDOM.render(<App />, document.getElementById("root"));
+
+
+
+
+
