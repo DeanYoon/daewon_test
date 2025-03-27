@@ -441,7 +441,7 @@ function VideoPlayer() {
         controls
         onClick={handleVideoClick}
       >
-        <source src="http://www.archive.org/download/Mario1_507/Mario1_507_512kb.mp4" />
+        <source src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI3ko7iisL7zDfzVGZY6WmbCEsOTNlBiiMyllbfisSYQuJMUHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5.mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
