@@ -249,12 +249,12 @@ function App() {
 
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center relative">
-      <div className="bg-gray-100 flex flex-col items-center justify-center max-w-[500px] mx-auto">
+      <div className="bg-gray-100 flex flex-col items-center justify-center max-w-[450px] mx-auto">
         <div
           className="screen1 w-full h-[100dvh] p-10 pt-0 relative overflow-hidden intro-fade-out"
           data-screen="1"
         >
-          <div className="absolute top-0 left-0 w-full h-[40vh] z-50">
+          <div className="absolute top-0 left-0 w-full h-[40vh] z-0">
             <img
               src="/img/screen1/fire1.png"
               alt="fire1"
@@ -292,7 +292,9 @@ function App() {
               style={{ "--final-top": "40vh", "--final-width": "48px", "--final-height": "48px" }}
             />
           </div>
-          <img src="/img/screen1/title.png" alt="title" className="w-4/5 mx-auto mt-[16vh]" />
+          <div className="relative z-10">
+            <img src="/img/screen1/title.png" alt="title" className="w-full mx-auto mt-[12vh]" />
+          </div>
           <img
             src="/img/screen1/icon_left.png"
             className="w-[40vw] mx-auto mt-[20vh] absolute -left-[10%] top-[20vh] slide-in-left max-w-[200px] z-50"
@@ -429,7 +431,7 @@ function App() {
           <div className="w-full h-4"></div>
         </div>
         <div
-          className={`screen3 w-full max-w-[500px] mx-auto h-[100dvh] fixed top-0 p-10 pt-0 overflow-hidden flex flex-col items-center justify-center screen3-popup z-50 ${isAtBottom ? "show" : ""}`}
+          className={`screen3 w-full max-w-[450px] mx-auto h-[100dvh] fixed top-0 p-10 pt-0 overflow-hidden flex flex-col items-center justify-center screen3-popup z-50 ${isAtBottom ? "show" : ""}`}
           data-screen="3"
         >
           <img src="/img/screen3/cont.png" alt="cont" className="w-full slide-up" />
