@@ -249,7 +249,7 @@ function App() {
 
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center relative">
-      <div className="bg-gray-100 flex flex-col items-center justify-center max-w-[450px] mx-auto">
+      <div className="bg-gray-100 flex flex-col items-center justify-center max-w-[430px] mx-auto">
         <div
           className="screen1 w-full h-[100dvh] p-10 pt-0 relative overflow-hidden intro-fade-out"
           data-screen="1"
@@ -305,7 +305,7 @@ function App() {
             className="w-[30vw] mx-auto mt-[20vh] absolute -right-[10%] top-[20vh] slide-in-right max-w-[160px] z-50"
             alt="Right decorative icon"
           />
-          <div className="justify-center items-center flex h-full absolute top-[40vh] md:top-[50vh] w-[90%] mx-auto computer_animation z-50 -ml-[2%]">
+          <div className="justify-center items-center flex h-full absolute top-[50vh] md:top-[55vh] w-[95%] mx-auto computer_animation z-50 -ml-[7%] scale-[1.3]">
             <img
               src="/img/screen1/laptop_top.png"
               alt="laptop top"
@@ -431,7 +431,7 @@ function App() {
           <div className="w-full h-4"></div>
         </div>
         <div
-          className={`screen3 w-full max-w-[450px] mx-auto h-[100dvh] fixed top-0 p-10 pt-0 overflow-hidden flex flex-col items-center justify-center screen3-popup z-50 ${isAtBottom ? "show" : ""}`}
+          className={`screen3 w-full max-w-[430px] mx-auto h-[100dvh] fixed top-0 p-10 pt-0 overflow-hidden flex flex-col items-center justify-center screen3-popup z-50 ${isAtBottom ? "show" : ""}`}
           data-screen="3"
         >
           <img src="/img/screen3/cont.png" alt="cont" className="w-full slide-up" />

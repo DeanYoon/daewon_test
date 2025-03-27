@@ -299,7 +299,7 @@ a {
     }
 
     to {
-        scale: 1.5;
+        scale: 1.2;
     }
 }
 
@@ -317,7 +317,7 @@ a {
 
     to {
         scale: 0.8;
-        transform: translateY(30px);
+        transform: translateY(13%);
     }
 }
 
