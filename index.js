@@ -499,7 +499,7 @@ function VideoPlayerMobile() {
   // Android-specific render
   if (isAndroid) {
     return (
-      <div className="w-full flex flex-col items-center mb-10 slide-up relative video-background md:hidden">
+      <div className="w-full flex flex-col items-center mb-10 slide-up relative video-background md:hidden border-2 border-red-500">
         <div class="video-container">
           <video id="myVideo" controls>
             <source src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI0hzqIktIt7BzVGZY6WmbCEsOTNlBiiMylgSNEtHBolhkHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5" type="video/mp4" />
@@ -527,7 +527,7 @@ function VideoPlayerMobile() {
   // Non-Android render
   return (
     <div>
-      <div className="w-full flex flex-col items-center mb-10 slide-up relative video-background md:hidden">
+      <div className="w-full flex flex-col items-center mb-10 slide-up relative video-background md:hidden border-2 border-red-500">
         <video
           ref={videoRef}
           className="w-full aspect-video cursor-pointer"
