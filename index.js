@@ -88,7 +88,7 @@ function VideoPlayer() {
           onClick={handleThumbnailClick}
         >
           <img
-            src="https://daewontest.vercel.apphttps://cloud-kr.store/daewon/agora2504/img/screen2/thumbnail.jpg"
+            src="https://cloud-kr.store/daewon/agora2504/img/screen2/thumbnail.jpg"
             alt="Video thumbnail"
             className="w-full h-full object-cover"
           />
