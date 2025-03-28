@@ -305,7 +305,7 @@ function App() {
             className="w-[30vw] mx-auto mt-[20vh] absolute -right-[10%] top-[20vh] slide-in-right max-w-[160px] z-50"
             alt="Right decorative icon"
           />
-          <div className="justify-center items-center flex h-full absolute top-[50vh] md:top-[55vh] w-[95%] mx-auto computer_animation z-50 -ml-[7%] scale-[1.3]">
+          <div className="justify-center items-center flex h-full absolute top-[45vh] md:top-[55vh] w-[95%] mx-auto computer_animation z-50 -ml-[7%] scale-[1.3]">
             <img
               src="/img/screen1/laptop_top.png"
               alt="laptop top"
