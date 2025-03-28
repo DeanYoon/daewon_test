@@ -32,7 +32,7 @@ a {
 }
 
 .screen1 {
-    background-image: url("/img/screen1/bg.png");
+    background-image: url("https://daewontest.vercel.app/img/screen1/bg.png");
     background-size: 100% 100%;
     background-position: top;
     background-repeat: no-repeat;
@@ -48,7 +48,7 @@ a {
 }
 
 .screen2 {
-    background-image: url("/img/screen2/firework.png");
+    background-image: url("https://daewontest.vercel.app/img/screen2/firework.png");
     background-size: 110%;
     background-position: center 10%;
     background-repeat: no-repeat;
@@ -223,7 +223,7 @@ a:hover {
 }
 
 .screen3 {
-    background-image: url("/img/screen3/bg.png");
+    background-image: url("https://daewontest.vercel.app/img/screen3/bg.png");
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
@@ -325,7 +325,7 @@ a {
 
 .video-background {
 
-    background-image: url("/img/screen2/thumbnail.jpg");
+    background-image: url("https://daewontest.vercel.app/img/screen2/thumbnail.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
