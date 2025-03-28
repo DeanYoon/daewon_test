@@ -43,45 +43,24 @@ function VideoPlayer() {
   // Android-specific render
   if (deviceType === "Android") {
     return (
-      <div className="w-full flex flex-col items-center mb-10 slide-up relative md:block hidden">
-        <div className="video-container" style={{ maxWidth: 0, maxHeight: 0, visibility: 'hidden' }}>
-          <video
-            id="myVideo"
-            ref={videoRef}
-            controls
-            style={{ maxWidth: 0, maxHeight: 0, visibility: 'hidden' }}
-          >
-            <source src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI0hzqIktIt7BzVGZY6WmbCEsOTNlBiiMylgSNEtHBolhkHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <button
-          className="relative cursor-pointer"
-          onClick={() => {
-            const video = videoRef.current;
-            if (video) {
-              if (video.requestFullscreen) {
-                video.requestFullscreen();
-              } else if (video.webkitRequestFullscreen) {
-                video.webkitRequestFullscreen();
-              }
-              video.play();
-            }
-          }}
-        >
-          <img
-            src="https://cloud-kr.store/daewon/agora2504/img/screen2/thumbnail.jpg"
-            alt="Video thumbnail"
-            className="w-full h-full object-cover"
-          />
-          {/* Play button overlay */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center">
-              <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[20px] border-l-black border-b-[10px] border-b-transparent ml-1"></div>
-            </div>
+      <div
+        className="w-full aspect-video relative cursor-pointer"
+        onClick={handleThumbnailClick}
+      >
+        <img
+          src="https://cloud-kr.store/daewon/agora2504/img/screen2/thumbnail.jpg"
+          // src="./img/screen2/thumbnail.png"
+          alt="Video thumbnail"
+          className="w-full h-full object-cover"
+        />
+        {/* Play button overlay */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center">
+            <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[20px] border-l-black border-b-[10px] border-b-transparent ml-1"></div>
           </div>
-        </button>
+        </div>
       </div>
+
     );
   }
 
