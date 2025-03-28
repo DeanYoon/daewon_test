@@ -294,6 +294,13 @@ function App() {
           </div>
           <div className="relative z-10">
             <img src="/img/screen1/title.png" alt="title" className="w-full mx-auto mt-[12vh]" />
+            {showTicket && (
+              <img
+                src="/img/screen1/ticket.png"
+                alt="ticket"
+                className="w-[150px] mx-auto mt-[1vh] ticket_animation"
+              />
+            )}
           </div>
           <img
             src="/img/screen1/icon_left.png"
@@ -328,15 +335,7 @@ function App() {
             />
           </div>
 
-          <div className="relative">
-            {showTicket && (
-              <img
-                src="/img/screen1/ticket.png"
-                alt="ticket"
-                className="w-[110px] mx-auto absolute top-[50vh] z-0 ticket_animation "
-              />
-            )}
-            </div>
+        
           <div className="absolute bottom-0 left-0 w-full h-10 bg-white flex items-center justify-center z-50">
             <img src="/img/screen1/logo.png" alt="logo" className="w-1/5 mx-auto" />
           </div>
