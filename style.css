@@ -170,7 +170,7 @@ a:hover {
 
 .closed_monitor {
     transform-origin: bottom;
-    animation: openMonitor 3s ease-out forwards;
+    animation: openMonitor 2s ease-out forwards;
     animation-delay: 0.9s;
     opacity: 0;
 }
@@ -242,8 +242,8 @@ a:hover {
 }
 
 .ticket_animation {
-    animation: ticketAnimation 0.3s ease-out forwards;
-    animation-delay: 3s, 5s;
+    animation: ticketAnimation 0.6s ease-out forwards;
+    animation-delay: 3s;
     opacity: 0;
 }
 

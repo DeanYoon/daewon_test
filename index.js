@@ -354,6 +354,9 @@ function App() {
             alt="Right decorative icon"
           />
         
+          <VideoPlayer />
+          <VideoPlayerMobile />
+          
           {/* <div className="w-full flex flex-col items-center mb-10 slide-up relative  md:flex hidden">
 
             <video id="mario-video" controls>
@@ -373,9 +376,6 @@ function App() {
             </a>
           </div>
 
-          <VideoPlayer />
-          <VideoPlayerMobile />
-          
           <img src="/img/screen2/lineup_title.png" alt="lineup title" className="w-1/5 mx-auto mb-5 slide-up" />
           <div className="flex flex-col items-center relative slide-up z-40">
             <img src="/img/screen2/lineup1.png" alt="lineup 1" className="w-full" />
