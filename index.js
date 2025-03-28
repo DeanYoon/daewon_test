@@ -88,7 +88,7 @@ function VideoPlayer() {
           onClick={handleThumbnailClick}
         >
           <img
-            src="https://daewontest.vercel.app/img/screen2/thumbnail.jpg"
+            src="https://daewontest.vercel.apphttps://cloud-kr.store/daewon/agora2504/img/screen2/thumbnail.jpg"
             alt="Video thumbnail"
             className="w-full h-full object-cover"
           />
@@ -256,80 +256,80 @@ function App() {
         >
           <div className="absolute top-0 left-0 w-full h-[40vh] z-0">
             <img
-              src="/img/screen1/fire1.png"
+              src="https://cloud-kr.store/daewon/agora2504/img/screen1/fire1.png"
               alt="fire1"
               className="w-20 h-20 absolute top-[20vh] left-0 firework-animation"
               style={{ "--final-top": "20vh", "--final-width": "80px", "--final-height": "80px" }}
             />
             <img
-              src="/img/screen1/fire2.png"
+              src="https://cloud-kr.store/daewon/agora2504/img/screen1/fire2.png"
               alt="fire2"
               className="w-14 h-14 absolute top-[5vh] left-[30%] firework-animation"
               style={{ "--final-top": "5vh", "--final-width": "56px", "--final-height": "56px" }}
             />
             <img
-              src="/img/screen1/fire_light1.png"
+              src="https://cloud-kr.store/daewon/agora2504/img/screen1/fire_light1.png"
               alt="fire_light1"
               className="w-1 h-12 absolute top-[5vh] left-[30%] mt-[50px] ml-[25px] firework-animation"
               style={{ "--final-top": "5vh", "--final-width": "4px", "--final-height": "48px" }}
             />
             <img
-              src="/img/screen1/fire3.png"
+              src="https://cloud-kr.store/daewon/agora2504/img/screen1/fire3.png"
               alt="fire3"
               className="w-24 h-24 absolute top-[10vh] -right-[5%] firework-animation"
               style={{ "--final-top": "10vh", "--final-width": "96px", "--final-height": "96px" }}
             />
             <img
-              src="/img/screen1/fire_light2.png"
+              src="https://cloud-kr.store/daewon/agora2504/img/screen1/fire_light2.png"
               alt="fire_light2"
               className="w-8 h-24 absolute top-[10vh] -right-[5%] mr-[30px] mt-[100px] firework-animation"
               style={{ "--final-top": "10vh", "--final-width": "32px", "--final-height": "96px" }}
             />
             <img
-              src="/img/screen1/fire4.png"
+              src="https://cloud-kr.store/daewon/agora2504/img/screen1/fire4.png"
               alt="fire4"
               className="w-12 h-12 absolute top-[40vh] right-[10%] firework-animation"
               style={{ "--final-top": "40vh", "--final-width": "48px", "--final-height": "48px" }}
             />
           </div>
           <div className="relative z-10">
-            <img src="/img/screen1/title.png" alt="title" className="w-full mx-auto mt-[12vh]" />
+            <img src="https://cloud-kr.store/daewon/agora2504/img/screen1/title.png" alt="title" className="w-full mx-auto mt-[12vh]" />
             {showTicket && (
               <img
-                src="/img/screen1/ticket.png"
+                src="https://cloud-kr.store/daewon/agora2504/img/screen1/ticket.png"
                 alt="ticket"
                 className="w-[150px] mx-auto mt-[1vh] ticket_animation"
               />
             )}
           </div>
           <img
-            src="/img/screen1/icon_left.png"
+            src="https://cloud-kr.store/daewon/agora2504/img/screen1/icon_left.png"
             className="w-[40vw] mx-auto mt-[20vh] absolute -left-[10%] top-[20vh] slide-in-left max-w-[200px] z-50"
             alt="Left decorative icon"
           />
           <img
-            src="/img/screen1/icon_right.png"
+            src="https://cloud-kr.store/daewon/agora2504/img/screen1/icon_right.png"
             className="w-[30vw] mx-auto mt-[20vh] absolute -right-[10%] top-[20vh] slide-in-right max-w-[160px] z-50"
             alt="Right decorative icon"
           />
           <div className="justify-center items-center flex h-full absolute top-[45vh] md:top-[55vh] w-[95%] mx-auto computer_animation z-50 -ml-[7%] scale-[1.2]">
             <img
-              src="/img/screen1/laptop_top.png"
+              src="https://cloud-kr.store/daewon/agora2504/img/screen1/laptop_top.png"
               alt="laptop top"
               className="max-w-[320px] w-full mx-auto absolute top-[310px] z-50 open_laptop_top"
             />
             <img
-              src="/img/screen1/monitor.png"
+              src="https://cloud-kr.store/daewon/agora2504/img/screen1/monitor.png"
               alt="monitor"
               className="max-w-[220px] w-full mx-auto absolute top-[160px] closed_monitor z-50"
             />
             <img
-              src="/img/screen1/monitor_text.png"
+              src="https://cloud-kr.store/daewon/agora2504/img/screen1/monitor_text.png"
               alt="monitor text"
               className="max-w-[220px] w-full mx-auto absolute top-[160px] closed_monitor_text z-50"
             />
             <img
-              src="/img/screen1/laptop_bottom.png"
+              src="https://cloud-kr.store/daewon/agora2504/img/screen1/laptop_bottom.png"
               alt="laptop bottom"
               className="max-w-[300px] w-full mx-auto absolute top-[300px] z-40"
             />
@@ -337,19 +337,19 @@ function App() {
 
         
           <div className="absolute bottom-0 left-0 w-full h-10 bg-white flex items-center justify-center z-50">
-            <img src="/img/screen1/logo.png" alt="logo" className="w-1/5 mx-auto" />
+            <img src="https://cloud-kr.store/daewon/agora2504/img/screen1/logo.png" alt="logo" className="w-1/5 mx-auto" />
           </div>
         </div>
         <div className="screen2 w-full min-h-[100dvh] p-10 pt-0 pb-28 relative overflow-hidden" data-screen="2">
-          <img src="/img/screen2/title.png" alt="title" className="w-full slide-up" />
-          <img src="/img/screen2/subtitle.png" alt="subtitle" className="w-2/3 mx-auto my-[4vh] slide-up" />
+          <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/title.png" alt="title" className="w-full slide-up" />
+          <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/subtitle.png" alt="subtitle" className="w-2/3 mx-auto my-[4vh] slide-up" />
           <img
-            src="/img/screen2/icon_left.png"
+            src="https://cloud-kr.store/daewon/agora2504/img/screen2/icon_left.png"
             className="w-[10vw] mx-auto mt-[10vh] absolute left-[5%] top-[22vh] max-w-[40px] z-50"
             alt="Left decorative icon"
           />
           <img
-            src="/img/screen2/icon_right.png"
+            src="https://cloud-kr.store/daewon/agora2504/img/screen2/icon_right.png"
             className="w-[15vw] mx-auto mt-[20vh] absolute top-[25%] -right-[5%] max-w-[70px]"
             alt="Right decorative icon"
           />
@@ -372,13 +372,13 @@ function App() {
               rel="noopener noreferrer"
               className="z-50 block"
             >
-              <img src="/img/screen2/btn_top.png" alt="사전신청하러가기" className="w-full my-[4vh]" />
+              <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/btn_top.png" alt="사전신청하러가기" className="w-full my-[4vh]" />
             </a>
           </div>
 
-          <img src="/img/screen2/lineup_title.png" alt="lineup title" className="w-1/5 mx-auto mb-5 slide-up" />
+          <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/lineup_title.png" alt="lineup title" className="w-1/5 mx-auto mb-5 slide-up" />
           <div className="flex flex-col items-center relative slide-up z-40">
-            <img src="/img/screen2/lineup1.png" alt="lineup 1" className="w-full" />
+            <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/lineup1.png" alt="lineup 1" className="w-full" />
             <a
               href="https://www.dtalks.kr/websim/userLiveView.do?live_idx=814&viewType=live"
               target="_blank"
@@ -387,7 +387,7 @@ function App() {
             ></a>
           </div>
           <div className="flex flex-col items-center relative slide-up z-40">
-            <img src="/img/screen2/lineup2.png" alt="lineup 2" className="w-full" />
+            <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/lineup2.png" alt="lineup 2" className="w-full" />
             <a
               href="https://www.dtalks.kr/websim/userLiveView.do?live_idx=815&viewType=live"
               target="_blank"
@@ -396,7 +396,7 @@ function App() {
             ></a>
           </div>
           <div className="flex flex-col items-center relative slide-up z-40">
-            <img src="/img/screen2/lineup3.png" alt="lineup 3" className="w-full" />
+            <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/lineup3.png" alt="lineup 3" className="w-full" />
             <a
               href="https://www.dtalks.kr/websim/userLiveView.do?live_idx=816&viewType=live"
               target="_blank"
@@ -405,7 +405,7 @@ function App() {
             ></a>
           </div>
           <div className="flex flex-col items-center relative slide-up z-40">
-            <img src="/img/screen2/lineup4.png" alt="lineup 4" className="w-full" />
+            <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/lineup4.png" alt="lineup 4" className="w-full" />
             <a
               href="https://www.dtalks.kr/websim/userLiveView.do?live_idx=817&viewType=live"
               target="_blank"
@@ -414,7 +414,7 @@ function App() {
             ></a>
           </div>
           <div className="flex flex-col items-center relative slide-up z-40">
-            <img src="/img/screen2/lineup5.png" alt="lineup 5" className="w-full" />
+            <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/lineup5.png" alt="lineup 5" className="w-full" />
             <a
               href="https://www.dtalks.kr/websim/userLiveView.do?live_idx=818&viewType=live"
               target="_blank"
@@ -429,7 +429,7 @@ function App() {
               rel="noopener noreferrer"
               className="z-50 block w-full flex items-center justify-center"
             >
-              <img src="/img/screen2/btn_bottom.png" alt="디톡스로 이동하기" className="w-full" />
+              <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/btn_bottom.png" alt="디톡스로 이동하기" className="w-full" />
             </a>
           </div>
           <div className="w-full h-32"></div>
@@ -439,7 +439,7 @@ function App() {
           className={`screen3 w-full max-w-[430px] mx-auto h-[100dvh] fixed top-0 p-10 pt-0 overflow-hidden flex flex-col items-center justify-center screen3-popup z-50 ${isAtBottom ? "show" : ""}`}
           data-screen="3"
         >
-          <img src="/img/screen3/cont.png" alt="cont" className="w-full slide-up" />
+          <img src="https://cloud-kr.store/daewon/agora2504/img/screen3/cont.png" alt="cont" className="w-full slide-up" />
           <div className="text-center text-[7px] text-white mt-10 absolute bottom-[5vh]">
             <p>
               <span className="font-bold">대웅제약</span> | 04808 서울특별시 성동구 천호대로 386
