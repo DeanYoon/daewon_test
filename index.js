@@ -109,7 +109,7 @@ function VideoPlayer() {
           controls
           playsInline
         >
-          <source src="https://play.wecandeo.com/video/v/?key=BOKNS9AQWrEisuRmtr15XPf9k7hPMdJrAABTxseeeGDJeaewICIj94gieie&dRate=2.5.mp4" />
+          <source src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI0hzqIktIt7BzVGZY6WmbCEsOTNlBiiMylgSNEtHBolhkHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5" />
           Your browser does not support the video tag.
         </video>
       )}
@@ -360,7 +360,7 @@ function App() {
           {/* <div className="w-full flex flex-col items-center mb-10 slide-up relative  md:flex hidden">
 
             <video id="mario-video" controls>
-              <source src="https://play.wecandeo.com/video/v/?key=BOKNS9AQWrEisuRmtr15XPf9k7hPMdJrAABTxseeeGDJeaewICIj94gieie&dRate=2.5.mp4" type="video/mp4" />
+              <source src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI0hzqIktIt7BzVGZY6WmbCEsOTNlBiiMylgSNEtHBolhkHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 
@@ -487,7 +487,7 @@ function VideoPlayerMobile() {
           controls
           onClick={handleVideoClick}
         >
-          <source src="https://play.wecandeo.com/video/v/?key=BOKNS9AQWrEisuRmtr15XPf9k7hPMdJrAABTxseeeGDJeaewICIj94gieie&dRate=2.5.mp4" />
+          <source src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI0hzqIktIt7BzVGZY6WmbCEsOTNlBiiMylgSNEtHBolhkHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5" />
           Your browser does not support the video tag.
         </video>
       </div>
