@@ -327,6 +327,8 @@ function App() {
               className="max-w-[300px] w-full mx-auto absolute top-[300px] z-40"
             />
           </div>
+
+          <div className="relative">
             {showTicket && (
               <img
                 src="/img/screen1/ticket.png"
@@ -334,6 +336,7 @@ function App() {
                 className="w-[110px] mx-auto absolute top-[50vh] z-0 ticket_animation "
               />
             )}
+            </div>
           <div className="absolute bottom-0 left-0 w-full h-10 bg-white flex items-center justify-center z-50">
             <img src="/img/screen1/logo.png" alt="logo" className="w-1/5 mx-auto" />
           </div>
