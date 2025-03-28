@@ -353,8 +353,7 @@ function App() {
             className="w-[15vw] mx-auto mt-[20vh] absolute top-[25%] -right-[5%] max-w-[70px]"
             alt="Right decorative icon"
           />
-          <VideoPlayer />
-          <VideoPlayerMobile />
+        
           {/* <div className="w-full flex flex-col items-center mb-10 slide-up relative  md:flex hidden">
 
             <video id="mario-video" controls>
@@ -373,6 +372,10 @@ function App() {
               <img src="/img/screen2/btn_top.png" alt="사전신청하러가기" className="w-full my-[4vh]" />
             </a>
           </div>
+
+          <VideoPlayer />
+          <VideoPlayerMobile />
+          
           <img src="/img/screen2/lineup_title.png" alt="lineup title" className="w-1/5 mx-auto mb-5 slide-up" />
           <div className="flex flex-col items-center relative slide-up z-40">
             <img src="/img/screen2/lineup1.png" alt="lineup 1" className="w-full" />
