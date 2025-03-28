@@ -439,28 +439,39 @@ function VideoPlayerMobile() {
     setIsAndroid(/android/i.test(userAgent));
   }, []);
 
-  const enterFullscreen = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-    } else if (video.msRequestFullscreen) {
-      video.msRequestFullscreen();
-    } else if (video.mozRequestFullScreen) {
-      video.mozRequestFullScreen();
-    } else if (video.webkitRequestFullScreen) {
-      video.webkitRequestFullScreen();
-    }
-  };
-
-  const handleVideoClick = () => {
-    const video = videoRef.current;
+  // Add goFullscreen function
+  const goFullscreen = () => {
+    const video = document.getElementById('myVideo');
     if (video) {
-      enterFullscreen();
-      video.play().catch(error => console.error("Error playing video:", error));
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.mozRequestFullScreen) {
+        video.mozRequestFullScreen();
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) {
+        video.msRequestFullscreen();
+      }
+      video.play(); // Auto-play when entering fullscreen
     }
   };
+
+  // Add click event listeners in useEffect
+  React.useEffect(() => {
+    if (isAndroid) {
+      const thumbnail = document.querySelector('.thumbnail');
+      const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+      if (thumbnail) thumbnail.addEventListener('click', goFullscreen);
+      if (fullscreenBtn) fullscreenBtn.addEventListener('click', goFullscreen);
+
+      // Cleanup
+      return () => {
+        if (thumbnail) thumbnail.removeEventListener('click', goFullscreen);
+        if (fullscreenBtn) fullscreenBtn.removeEventListener('click', goFullscreen);
+      };
+    }
+  }, [isAndroid]);
 
   // Android-specific render
   if (isAndroid) {
@@ -478,13 +489,14 @@ function VideoPlayerMobile() {
           </video>
         </div>
         <button
+          id="fullscreenBtn"
           className="relative cursor-pointer w-full"
-          onClick={handleVideoClick}
+          onClick={goFullscreen}
         >
           <img
-            src="https://cloud-kr.store/daewon/agora2504/img/screen2/thumbnail.jpg"
-            alt="Video thumbnail"
-            className="w-full h-full object-cover"
+            className="thumbnail w-full h-full object-cover"
+            src="https://assets.playnccdn.com/res/lineagem/update/2024/240529_update/4th/pc/img/section15/898da534d906bcd0539af941045554fbd78682dc.webp"
+            alt="Video Thumbnail"
           />
           {/* Play button overlay */}
           <div className="absolute inset-0 flex items-center justify-center">
@@ -505,7 +517,7 @@ function VideoPlayerMobile() {
           ref={videoRef}
           className="w-full aspect-video cursor-pointer"
           controls
-          onClick={handleVideoClick}
+          onClick={goFullscreen}
         >
           <source src="https://api.wecandeo.com/video?k=BOKNS9AQWrEisuRmtr15XPSMqlX3VngzwdaThCN6cMkef8pF0DvisiiI0hzqIktIt7BzVGZY6WmbCEsOTNlBiiMylgSNEtHBolhkHEe9bJ1RU1jptnIuxXOipIrKGKgfKFPwpHEG8NdddPQV94dCufsRJoQieie&dRate=2.5" />
           Your browser does not support the video tag.
