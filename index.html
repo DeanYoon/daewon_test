@@ -11,8 +11,8 @@
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="AGORA WEEK FESTA">
     <meta property="og:description" content="2025년 D-Talks 아고라위크에 초대합니다!">
-    <meta property="og:image" content="https://cloud-kr.store/daewon/agora2504/img/ogImg.jpg">
-    <meta property="og:url" content="https://cloud-kr.store/daewon/agora2504/">
+    <meta property="og:image" content="https://daewontest.vercel.app/img/ogImg.jpg">
+    <meta property="og:url" content="https://daewontest.vercel.app/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="AGORA WEEK FESTA">
     <meta property="og:locale" content="ko_KR">
@@ -21,8 +21,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AGORA WEEK FESTA">
     <meta name="twitter:description" content="2025년 D-Talks 아고라위크에 초대합니다!">
-    <meta name="twitter:image" content="https://cloud-kr.store/daewon/agora2504/img/ogImg.jpg">
-    <meta name="twitter:url" content="https://cloud-kr.store/daewon/agora2504/">
+    <meta name="twitter:image" content="https://daewontest.vercel.app/img/ogImg.jpg">
+    <meta name="twitter:url" content="https://daewontest.vercel.app/">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -186,7 +186,8 @@
 
         .closed_monitor {
             transform-origin: bottom;
-            animation: openMonitor 2s ease-out forwards;
+            animation:
+                openMonitor 2s ease-out forwards;
             animation-delay: 0.9s;
             opacity: 0;
         }
@@ -196,6 +197,47 @@
             animation: openMonitorScaleText 2.5s ease-out forwards;
             animation-delay: 7s;
             opacity: 0;
+        }
+
+        @keyframes monitorScaleUp {
+            0% {
+                opacity: 0;
+            }
+
+            1% {
+                opacity: 1;
+                scale: 1;
+                transform: translate(0, 0);
+                filter: brightness(100%);
+            }
+
+            100% {
+                opacity: 1;
+                scale: 5;
+                transform: translate(0%, -30%);
+                filter: brightness(40%);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .fade_in {
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 8s;
+        }
+
+        .monitor_scale_up {
+            opacity: 0;
+            animation: monitorScaleUp 2s ease-out forwards;
+            animation-delay: 6s;
         }
 
         @keyframes firework {
@@ -285,20 +327,8 @@
             display: none;
         }
 
-        @keyframes computerScaleUp {
-            from {
-                scale: 1;
-            }
 
-            to {
-                scale: 1.2;
-            }
-        }
 
-        .computer_animation {
-            animation: computerScaleUp 1s ease-out forwards;
-            animation-delay: 5s;
-        }
 
         .video-background {
             background-image: url("https://daewontest.vercel.app/img/screen2/thumbnail.jpg");
@@ -332,65 +362,67 @@
                 <div class="screen1 w-full h-[100dvh] p-10 pt-0 relative overflow-hidden intro-fade-out"
                     data-screen="1">
                     <div class="absolute top-0 left-0 w-full h-[40vh] z-0">
-                        <img src="https://cloud-kr.store/daewon/agora2504/img/screen1/fire1.png" alt="fire1"
+                        <img src="https://daewontest.vercel.app/img/screen1/fire1.png" alt="fire1"
                             class="w-20 h-20 absolute top-[20vh] left-0 firework-animation"
                             style="--final-top: 20vh; --final-width: 80px; --final-height: 80px;">
-                        <img src="https://cloud-kr.store/daewon/agora2504/img/screen1/fire2.png" alt="fire2"
+                        <img src="https://daewontest.vercel.app/img/screen1/fire2.png" alt="fire2"
                             class="w-14 h-14 absolute top-[5vh] left-[30%] firework-animation"
                             style="--final-top: 5vh; --final-width: 56px; --final-height: 56px;">
-                        <img src="https://cloud-kr.store/daewon/agora2504/img/screen1/fire_light1.png" alt="fire_light1"
+                        <img src="https://daewontest.vercel.app/img/screen1/fire_light1.png" alt="fire_light1"
                             class="w-1 h-12 absolute top-[5vh] left-[30%] mt-[50px] ml-[25px] firework-animation"
                             style="--final-top: 5vh; --final-width: 4px; --final-height: 48px;">
-                        <img src="https://cloud-kr.store/daewon/agora2504/img/screen1/fire3.png" alt="fire3"
+                        <img src="https://daewontest.vercel.app/img/screen1/fire3.png" alt="fire3"
                             class="w-24 h-24 absolute top-[10vh] -right-[5%] firework-animation"
                             style="--final-top: 10vh; --final-width: 96px; --final-height: 96px;">
-                        <img src="https://cloud-kr.store/daewon/agora2504/img/screen1/fire_light2.png" alt="fire_light2"
+                        <img src="https://daewontest.vercel.app/img/screen1/fire_light2.png" alt="fire_light2"
                             class="w-8 h-24 absolute top-[10vh] -right-[5%] mr-[30px] mt-[100px] firework-animation"
                             style="--final-top: 10vh; --final-width: 32px; --final-height: 96px;">
-                        <img src="https://cloud-kr.store/daewon/agora2504/img/screen1/fire4.png" alt="fire4"
+                        <img src="https://daewontest.vercel.app/img/screen1/fire4.png" alt="fire4"
                             class="w-12 h-12 absolute top-[40vh] right-[10%] firework-animation"
                             style="--final-top: 40vh; --final-width: 48px; --final-height: 48px;">
                     </div>
                     <div class="relative z-10">
-                        <img src="https://cloud-kr.store/daewon/agora2504/img/screen1/title.png" alt="title"
+                        <img src="https://daewontest.vercel.app/img/screen1/title.png" alt="title"
                             class="w-full mx-auto mt-[12vh]">
-                        <img id="ticket" src="https://cloud-kr.store/daewon/agora2504/img/screen1/ticket.png"
-                            alt="ticket" class="w-[150px] mx-auto mt-[1vh] ticket_animation" style="display: none;">
+                        <img id="ticket" src="https://daewontest.vercel.app/img/screen1/ticket.png" alt="ticket"
+                            class="w-[150px] mx-auto mt-[1vh] ticket_animation" style="display: none;">
                     </div>
-                    <img src="https://cloud-kr.store/daewon/agora2504/img/screen1/icon_left.png"
+                    <img src="https://daewontest.vercel.app/img/screen1/icon_left.png"
                         class="w-[40vw] mx-auto mt-[20vh] absolute -left-[10%] top-[20vh] slide-in-left max-w-[200px] z-50"
                         alt="Left decorative icon">
-                    <img src="https://cloud-kr.store/daewon/agora2504/img/screen1/icon_right.png"
+                    <img src="https://daewontest.vercel.app/img/screen1/icon_right.png"
                         class="w-[30vw] mx-auto mt-[20vh] absolute -right-[10%] top-[20vh] slide-in-right max-w-[160px] z-50"
                         alt="Right decorative icon">
                     <div
-                        class="justify-center items-center flex h-full absolute top-[45vh] md:top-[55vh] w-[95%] mx-auto computer_animation z-50 -ml-[7%] scale-[1.2]">
-                        <img src="https://cloud-kr.store/daewon/agora2504/img/screen1/laptop_top.png" alt="laptop top"
+                        class="justify-center items-center flex h-full absolute top-[45vh] md:top-[55vh] w-[95%] mx-auto  z-50 -ml-[7%] scale-[1.2]">
+                        <img src="https://daewontest.vercel.app/img/screen1/laptop_top.png" alt="laptop top"
                             class="max-w-[320px] w-full mx-auto absolute top-[310px] z-50 open_laptop_top">
-                        <img src="https://cloud-kr.store/daewon/agora2504/img/screen1/monitor.png" alt="monitor"
-                            class="max-w-[220px] w-full mx-auto absolute top-[160px] closed_monitor z-50">
-                        <img src="https://cloud-kr.store/daewon/agora2504/img/screen1/monitor_text.png"
-                            alt="monitor text"
-                            class="max-w-[220px] w-full mx-auto absolute top-[160px] closed_monitor_text z-50">
-                        <img src="https://cloud-kr.store/daewon/agora2504/img/screen1/laptop_bottom.png"
-                            alt="laptop bottom" class="max-w-[300px] w-full mx-auto absolute top-[300px] z-40">
+                        <img src="https://daewontest.vercel.app/img/screen1/monitor.png" alt="monitor"
+                            class="max-w-[220px] w-full mx-auto absolute top-[160px] closed_monitor z-50 ">
+                        <img src="https://daewontest.vercel.app/img/screen1/monitor.png" alt="monitor"
+                            class="max-w-[220px] w-full mx-auto absolute top-[160px]  z-50 monitor_scale_up">
+                        <img src="https://daewontest.vercel.app/img/screen1/monitor_text.png" alt="monitor text"
+                            class="max-w-[280px] w-full mx-auto absolute -top-[10vh] z-50  fade_in opacity-0">
+
+                        <img src="https://daewontest.vercel.app/img/screen1/laptop_bottom.png" alt="laptop bottom"
+                            class="max-w-[300px] w-full mx-auto absolute top-[300px] z-40">
                     </div>
                     <div class="absolute bottom-0 left-0 w-full h-10 bg-white flex items-center justify-center z-50">
-                        <img src="https://cloud-kr.store/daewon/agora2504/img/screen1/logo.png" alt="logo"
-                            class="w-1/5 mx-auto">
+                        <img src="https://daewontest.vercel.app/img/screen1/logo.png" alt="logo" class="w-1/5 mx-auto">
+                        <img src="https://daewontest.vercel.app/img/screen1/monitor_text_bottom.png" alt="monitor text"
+                            class="max-w-[280px] w-full mx-auto absolute -mt-20 z-50  fade_in opacity-0">
                     </div>
                 </div>
 
                 <!-- Screen 2 -->
                 <div class="screen2 w-full min-h-[100dvh] p-10 pt-0 pb-28 relative overflow-hidden" data-screen="2">
-                    <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/title.png" alt="title"
-                        class="w-full slide-up">
-                    <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/subtitle.png" alt="subtitle"
+                    <img src="https://daewontest.vercel.app/img/screen2/title.png" alt="title" class="w-full slide-up">
+                    <img src="https://daewontest.vercel.app/img/screen2/subtitle.png" alt="subtitle"
                         class="w-2/3 mx-auto my-[4vh] slide-up">
-                    <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/icon_left.png"
+                    <img src="https://daewontest.vercel.app/img/screen2/icon_left.png"
                         class="w-[10vw] mx-auto mt-[10vh] absolute left-[5%] top-[22vh] max-w-[40px] z-50"
                         alt="Left decorative icon">
-                    <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/icon_right.png"
+                    <img src="https://daewontest.vercel.app/img/screen2/icon_right.png"
                         class="w-[15vw] mx-auto mt-[20vh] absolute top-[25%] -right-[5%] max-w-[70px]"
                         alt="Right decorative icon">
 
@@ -398,8 +430,8 @@
                     <div id="videoPlayerDesktop"
                         class="w-full flex flex-col items-center mb-10 slide-up relative md:block hidden">
                         <div id="thumbnailDesktop" class="w-full aspect-video relative cursor-pointer">
-                            <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/thumbnail.jpg"
-                                alt="Video thumbnail" class="w-full h-full object-cover border-2 border-red-500">
+                            <img src="https://daewontest.vercel.app/img/screen2/thumbnail.jpg" alt="Video thumbnail"
+                                class="w-full h-full object-cover">
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center">
                                     <div
@@ -427,8 +459,7 @@
                             </video>
                         </div>
                         <button id="fullscreenBtn" class="relative">
-                            <img class="thumbnail"
-                                src="https://cloud-kr.store/daewon/agora2504/img/screen2/thumbnail.jpg"
+                            <img class="thumbnail" src="https://daewontest.vercel.app/img/screen2/thumbnail.jpg"
                                 alt="Video Thumb border-2 border-red-500nail">
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <div class="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center">
@@ -444,48 +475,43 @@
                     <div class="flex flex-col items-center relative slide-up blink">
                         <a href="https://www.dtalks.kr/bbs/boardView.do?bsIdx=40&bIdx=1347&page=1&menuId=3088&bcIdx=0"
                             target="_blank" rel="noopener noreferrer" class="z-50 block">
-                            <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/btn_top.png" alt="사전신청하러가기"
+                            <img src="https://daewontest.vercel.app/img/screen2/btn_top.png" alt="사전신청하러가기"
                                 class="w-full my-[4vh]">
                         </a>
                     </div>
 
                     <!-- Lineup section -->
-                    <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/lineup_title.png" alt="lineup title"
+                    <img src="https://daewontest.vercel.app/img/screen2/lineup_title.png" alt="lineup title"
                         class="w-1/5 mx-auto mb-5 slide-up">
 
                     <!-- Lineup items -->
                     <div class="flex flex-col items-center relative slide-up z-40">
-                        <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/lineup1.png" alt="lineup 1"
-                            class="w-full">
+                        <img src="https://daewontest.vercel.app/img/screen2/lineup1.png" alt="lineup 1" class="w-full">
                         <a href="https://www.dtalks.kr/websim/userLiveView.do?live_idx=814&viewType=live"
                             target="_blank" rel="noopener noreferrer"
                             class="block w-[30%] h-8 absolute bottom-[31%] z-50"></a>
                     </div>
                     <!-- Repeat for lineup2-5 -->
                     <div class="flex flex-col items-center relative slide-up z-40">
-                        <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/lineup2.png" alt="lineup 2"
-                            class="w-full">
+                        <img src="https://daewontest.vercel.app/img/screen2/lineup2.png" alt="lineup 2" class="w-full">
                         <a href="https://www.dtalks.kr/websim/userLiveView.do?live_idx=815&viewType=live"
                             target="_blank" rel="noopener noreferrer"
                             class="block w-[30%] h-8 absolute bottom-[31%] z-50"></a>
                     </div>
                     <div class="flex flex-col items-center relative slide-up z-40">
-                        <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/lineup3.png" alt="lineup 3"
-                            class="w-full">
+                        <img src="https://daewontest.vercel.app/img/screen2/lineup3.png" alt="lineup 3" class="w-full">
                         <a href="https://www.dtalks.kr/websim/userLiveView.do?live_idx=816&viewType=live"
                             target="_blank" rel="noopener noreferrer"
                             class="block w-[30%] h-8 absolute bottom-[27%] z-50"></a>
                     </div>
                     <div class="flex flex-col items-center relative slide-up z-40">
-                        <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/lineup4.png" alt="lineup 4"
-                            class="w-full">
+                        <img src="https://daewontest.vercel.app/img/screen2/lineup4.png" alt="lineup 4" class="w-full">
                         <a href="https://www.dtalks.kr/websim/userLiveView.do?live_idx=817&viewType=live"
                             target="_blank" rel="noopener noreferrer"
                             class="block w-[30%] h-8 absolute bottom-[30%] z-50"></a>
                     </div>
                     <div class="flex flex-col items-center relative slide-up z-40">
-                        <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/lineup5.png" alt="lineup 5"
-                            class="w-full">
+                        <img src="https://daewontest.vercel.app/img/screen2/lineup5.png" alt="lineup 5" class="w-full">
                         <a href="https://www.dtalks.kr/websim/userLiveView.do?live_idx=818&viewType=live"
                             target="_blank" rel="noopener noreferrer"
                             class="block w-[30%] h-8 absolute bottom-[24%] z-50"></a>
@@ -494,8 +520,8 @@
                     <div class="flex flex-col items-center relative slide-up mb-20">
                         <a href="https://www.dtalks.kr/main.do" target="_blank" rel="noopener noreferrer"
                             class="z-50 block w-full flex items-center justify-center">
-                            <img src="https://cloud-kr.store/daewon/agora2504/img/screen2/btn_bottom.png"
-                                alt="디톡스로 이동하기" class="w-full">
+                            <img src="https://daewontest.vercel.app/img/screen2/btn_bottom.png" alt="디톡스로 이동하기"
+                                class="w-full">
                         </a>
                     </div>
                     <div class="w-full h-32"></div>
@@ -505,8 +531,7 @@
                 <!-- Screen 3 -->
                 <div class="screen3 w-full max-w-[430px] mx-auto h-[100dvh] fixed top-0 p-10 pt-0 overflow-hidden flex flex-col items-center justify-center screen3-popup z-50"
                     data-screen="3">
-                    <img src="https://cloud-kr.store/daewon/agora2504/img/screen3/cont.png" alt="cont"
-                        class="w-full slide-up">
+                    <img src="https://daewontest.vercel.app/img/screen3/cont.png" alt="cont" class="w-full slide-up">
                     <div class="text-center text-[7px] text-white mt-10 absolute bottom-[5vh]">
                         <p><span class="font-bold">대웅제약</span> | 04808 서울특별시 성동구 천호대로 386</p>
                         <p>TEL (02)2204-7000 (수신자부담) 080-492-8272 FAX (02)3436-4878 www.daewoongpharm.com</p>
