@@ -361,6 +361,8 @@
                 <!-- Screen 1 -->
                 <div class="screen1 w-full h-[100dvh] p-10 pt-0 relative overflow-hidden intro-fade-out z-50"
                     data-screen="1">
+                    <img src="https://daewontest.vercel.app/img/screen1/head_top.png" alt="head_top"
+                        class="absolute top-0 left-4 w-14 h-16 z-0">
                     <div class="absolute top-0 left-0 w-full h-[40vh] z-0">
                         <img src="https://daewontest.vercel.app/img/screen1/fire1.png" alt="fire1"
                             class="w-20 h-20 absolute top-[20vh] left-0 firework-animation"
@@ -647,7 +649,7 @@
         setTimeout(() => {
             document.body.classList.remove("prevent-scroll");
             canScroll = true;
-        }, 12000);//12000
+        }, 1200);//12000
 
         // Bottom detection
         const bottomObserver = new IntersectionObserver(
