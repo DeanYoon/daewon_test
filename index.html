@@ -213,9 +213,9 @@
 
             100% {
                 opacity: 1;
-                scale: 5;
-                transform: translate(0%, -30%);
-                filter: brightness(40%);
+                scale: 7;
+                transform: translate(0%, -20%);
+                filter: brightness(60%);
             }
         }
 
@@ -359,7 +359,7 @@
         <div class="bg-gray-100 flex flex-col items-center justify-center relative">
             <div class="bg-gray-100 flex flex-col items-center justify-center max-w-[430px] mx-auto">
                 <!-- Screen 1 -->
-                <div class="screen1 w-full h-[100dvh] p-10 pt-0 relative overflow-hidden intro-fade-out"
+                <div class="screen1 w-full h-[100dvh] p-10 pt-0 relative overflow-hidden intro-fade-out z-50"
                     data-screen="1">
                     <div class="absolute top-0 left-0 w-full h-[40vh] z-0">
                         <img src="https://daewontest.vercel.app/img/screen1/fire1.png" alt="fire1"
@@ -415,7 +415,7 @@
                 </div>
 
                 <!-- Screen 2 -->
-                <div class="screen2 w-full min-h-[100dvh] p-10 pt-0 pb-28 relative overflow-hidden" data-screen="2">
+                <div class="screen2 w-full min-h-[100dvh] p-10 pt-0 pb-28 relative overflow-hidden " data-screen="2">
                     <img src="https://daewontest.vercel.app/img/screen2/title.png" alt="title" class="w-full slide-up">
                     <img src="https://daewontest.vercel.app/img/screen2/subtitle.png" alt="subtitle"
                         class="w-2/3 mx-auto my-[4vh] slide-up">
@@ -542,6 +542,19 @@
     </div>
 
     <script>
+        // Scroll to top on page load/refresh
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        };
+
+        // Alternative method for better compatibility
+        window.addEventListener('load', function () {
+            window.scrollTo(0, 0);
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 100); // Additional scroll after a slight delay to ensure it works
+        });
+
         // Initialize state
         let showTicket = false;
         let isAtBottom = false;
@@ -634,7 +647,7 @@
         setTimeout(() => {
             document.body.classList.remove("prevent-scroll");
             canScroll = true;
-        }, 12000);
+        }, 1200);//12000
 
         // Bottom detection
         const bottomObserver = new IntersectionObserver(
